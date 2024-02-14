@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="registre.css">
+    <script src="../js/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <section>
+        <div>
+            <h1>Crear usuario</h1>
+        </div>
+        <div>
+            <form id="formRegistre" >
+                <div>
+                    <label for="name">name</label>
+                    <input id="name" name="name"  type="text" placeholder="name">
+                    <span id="namedSpan" class="messageError"></span>
+                </div>
+                <div>
+                    <label for="Apellido">apellido</label>
+                    <input id="apellido" name="apellido"  type="text" placeholder="apellido">
+                    <span id="apellidoSpan" class="messageError"></span>
+                </div>
+                <div>
+                    <label for="email">email</label>
+                    <input id="email" name="email" type="text" placeholder="email">
+                    <span id="emailSpan" class="messageError"></span>
+                </div>
+                <div>
+                    <label for="password">password</label>
+                    <input id="password" name="password" type="password" placeholder="password">
+                    <span id="passwordSpan" class="messageError"></span>
+                </div>
+                <div>
+                    <label for="repetirPassword">repetir password</label>
+                    <input id="repetirPassword" name="repetirPassword" type="password" placeholder="repetor password">
+                    <span id="repetirPasswordSpan" class="messageError"></span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button id="boton-registrarse" class="mi-boton boton-success w-100">
+                        registrarse
+                    </button>
+                </div>
+                <div id="div-login">
+                    <a href="../login/login.html">Login</a>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script src="registre.js"></script>
+    
+</body>
+</html>

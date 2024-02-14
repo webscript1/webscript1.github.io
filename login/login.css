@@ -1,0 +1,68 @@
+/*inicio login*/
+h1{
+    text-align: center;
+}
+#formLogin{
+    margin: auto;
+    margin-top: 40px;
+    width: 500px;
+    padding: 10px;
+    position: relative;
+    
+}
+
+ input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+    outline: none; /* Elimina el contorno predeterminado al hacer focus */
+    box-sizing: border-box; 
+  
+ 
+
+}
+
+.mi-boton {
+   
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Efecto de transición en el color de fondo */
+
+    /* Agrega estilos adicionales al pasar el mouse sobre el botón */
+  
+}
+.boton-success{
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+
+    &:hover {
+        background-color: #2980b9; /* Nuevo color de fondo al pasar el mouse */
+    }
+}
+
+.w-100{
+    width: 100%;
+}
+
+#container-boton-login{
+     margin-top: 10px;
+}
+
+#div-registre{
+    margin-top: 15px;
+}
+#div-registre a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*fin login*/

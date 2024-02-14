@@ -1,0 +1,54 @@
+*{
+    padding: 0px;
+    margin: 0px;
+   
+}
+/*inicio login*/
+h1{
+    text-align: center;
+}
+.clear-fix{
+    display: block;
+    clear: both;
+}
+.mi-boton {
+   
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Efecto de transición en el color de fondo */
+
+    /* Agrega estilos adicionales al pasar el mouse sobre el botón */
+  
+}
+.boton-success{
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+
+    &:hover {
+        background-color: #2980b9; /* Nuevo color de fondo al pasar el mouse */
+    }
+}
+
+.w-100{
+    width: 100%;
+}
+
+.inputError{
+    border: 1px solid red;
+    border-color: 1px solid red !important;
+   
+}
+
+.messageError{
+    display: block;
+    min-height: 20px;
+    color: red;
+}
+
+
+
+
+/*fin login*/

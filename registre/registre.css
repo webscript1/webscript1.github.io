@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+
+#formRegistre{
+    margin: auto;
+    margin-top: 40px;
+    width: 500px;
+    padding: 10px;
+    position: relative;
+    
+}
+input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+    outline: none; /* Elimina el contorno predeterminado al hacer focus */
+    box-sizing: border-box; 
+  
+ 
+
+}
+#div-login{
+    margin-top: 15px;
+}
+#div-login a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}

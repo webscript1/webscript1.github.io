@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css//styles.css">
+    <link rel="stylesheet" href="contactos.css">
+    <script src="./contactos.js"></script>
+</head>
+<body>
+  <div id="contenedorContatos">
+    <section id="menu">
+        <a id="ir-agenda"><h2>Agenda</h2></a>
+        
+        <div id="logout">
+            <div>
+                <span style="margin-right: 5px;">Usuario: </span>
+                <span id="nameUser" style="margin-right: 10px;"></span>
+            </div>
+            <span id="deslogar" style="color: red;">logout</span>
+        </div>
+    </section>
+ 
+
+    <section id="contenedor">
+      <div id="container-1">
+          <div id="container-count-registro">
+              <h3>lista de contactos <span id="totalContactos"></span></h3>
+              <div id="count-registros">
+                  <span>mostrar</span>
+                  <input id="imputLimit" value='20' type="number">
+                  <span>registros</span>
+              </div>
+
+          </div>
+          <div id="contenedor-buscar-crear">
+             <button  id="addContacto" class="mi-boton boton-success">Nuevo contacto</button>
+             <div class="clear-fix"></div>
+             <div id="contenedor-buscar-user">
+              
+              <label style="margin-right:10px ;" for="buscar">Buscar</label>
+               <input id="inputBuscarContacto" placeholder="buscar contacto" type="text">
+               <div>
+                <button id="botonBurcarContacto">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
+                </button>
+               </div>
+             </div>
+          </div>
+
+      </div>
+      <div id="contenedor-2">
+          <div id="alertSucces">
+          
+          
+          </div>
+          <table class="tablaContactos">
+              <thead>
+                <tr>
+                
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="bodyTabla">
+                <!-- Aquí irían las filas de datos, puedes agregar tantas como necesites -->
+                
+             
+                <!-- Otras filas de datos -->
+              </tbody>
+            </table>
+
+            <div id="contenedorPagination" style="display: flex; justify-content: center; margin-top: 20px;">
+             
+            </div>
+
+
+      </div>
+
+      <div id="contactoNoEncontrado">
+          <div>
+            <h2>contacto no encontrado ):</h2>
+          </div>
+      </div>
+      <div id="noTieneContactos">
+        <div>
+          <h2>no tiene contactos</h2>
+        </div>
+    </div>
+  </section>
+
+  <section id="crear-contacto">
+   <div>
+    <button id="botonRegresar" class="mi-boton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+    </svg> Regresar</button>
+    <h2>crear contacto</h2>
+   </div>
+
+    <div>
+      <form id="formulario-crear-contacto" enctype="multipart/form-data">
+        <div>
+          <label for="name">nombre</label>
+          <input id="c-name" name="name" type="text">
+          <span id="nombreErrorSpam"></span>
+        </div>
+        <div>
+          <label  for="apellido">apellido</label>
+          <input id="c-apellido" name="apellido" type="text">
+          <span id="apellidoErrorSpam"></span>
+        </div>
+        <div>
+          <label for="email">email</label>
+          <input id="c-email" name="email" type="text">
+          <span id="emailErrorSpam"></span>
+        </div>
+        <div>
+          <label for="telefono">telefono</label>
+          <input id="c-telefono" name="telefono" type="text">
+          <span id="telefonoErrorSpam"></span>
+        </div>
+        <div>
+           <label for="image">image</label>
+           <input type="file" name="image" id="c-image">
+           <span id="imageErrorSpam"></span>
+        </div>
+        <div>
+           <button type="button" id="botonCrearContacto" class="mi-boton boton-success">crear</button>
+          
+        </div>
+      </form>
+     
+    </div>
+  </section>
+  
+  <section id="update-contacto">
+    <div>
+     <button id="botonRegresarUpdateContacto" class="mi-boton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+       <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+     </svg> Regresar</button>
+     <h2>Actualizar contacto</h2>
+    </div>
+
+     <div>
+       <form  id="formulario-update-contacto" action="">
+       
+       </form>
+     </div>
+   </section>
+
+   </div>
+
+   <div id="loading">
+            <span>cargando...</span>
+   </div>
+</body>
+</html>

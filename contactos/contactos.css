@@ -1,0 +1,248 @@
+#contenedorContatos{
+     display: none; 
+     margin-bottom: 20px;  
+}
+#loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+h2{
+    
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    justify-content: center;
+    height: inherit;
+    height: 100px;
+}
+a{
+  text-decoration: none;
+  color: white;
+  transition: all 300ms;
+}
+a:hover{
+  text-decoration: underline;
+}
+#contenedor{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+#contenedor-2 {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#menu{
+    display: flex;
+    justify-content: space-between; 
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+#menu nav {
+    display: flex; /* Cambiado a flex para mejor manejo de altura */
+    align-items: center; /* Centra verticalmente el contenido dentro de nav */
+   
+    height: 100px;
+}
+
+nav ul li{
+    display: inline;
+}
+#logout{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+   justify-self: right;
+    float: right;
+    color: wheat;
+    transition: all 300ms;
+}
+
+#logout > span:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#container-1{
+    display: flex;
+    justify-content: space-between;
+}
+
+input{
+  display: block;
+  width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;   
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    outline: none; /* Elimina el contorno predeterminado al hacer focus */
+    box-sizing: border-box; 
+  
+ 
+
+}
+.paginationSelected{
+  border: 1px solid blue !important;
+}
+
+#contenedor-buscar-crear .mi-boton{
+    margin-bottom: 10px;
+    float: right;
+}
+
+#contenedor-buscar-user{
+    display: flex;
+     align-items: center
+     
+}
+#container-count-registro h3{
+    margin-bottom: 20px;
+}
+#count-registros{
+    display: flex;
+    align-items: center;
+}
+#count-registros input{
+    width:  60px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    border: none;
+  }
+
+  th {
+    border: none;
+    background-color: #000000;
+    color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color claro para filas pares */
+  }
+
+  tr:nth-child(odd) {
+    background-color: #e6e6e6; /* Color oscuro para filas impares */
+  }
+
+  img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+  .papelera{
+    cursor: pointer;
+    color: red;
+  }
+
+  .pincel{
+    cursor: pointer;
+    color: green;
+  }
+  #pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  .pagination-item {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .pagination-item:hover {
+    background-color: #f2f2f2;
+  }
+
+  .pagination-item.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  /*inicio crear contactp*/
+  #crear-contacto,#update-contacto{
+   display: none;
+   width: 400px;
+   margin: 0px auto;
+  }
+ 
+  #crear-contacto  div form{
+    margin: 0px auto;
+  }
+
+  #botonCrearContacto, #botonUpdateContacto{
+    width: 100%;
+  }
+  #botonRegresar,#botonRegresarUpdateContacto{
+    position: absolute;
+    margin-top: 40px;
+  }
+
+  
+
+  
+  /*fin crear contactp*/
+
+  #contactoNoEncontrado{
+    display: none
+  }
+
+  #alertSucces{
+    
+    position: relative;
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center; 
+    height: 58px;
+    background-color: #cff4fc;
+    color: #055160;
+   
+  }
+  #botonCerrarAlerta {
+    position: absolute;
+    border: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    width: auto;
+    overflow: visible;
+    background: none;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    outline: none;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    
+}
+#botonCerrarAlerta:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
