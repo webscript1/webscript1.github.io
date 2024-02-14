@@ -2,7 +2,7 @@
 'use strict'
 const url='https://api-agenda-mgys.onrender.com'
 // Verifica que el documento esté completamente cargado antes de ejecutar código jQuery
-$(document).ready(function() {
+
     // Tu código jQuery aquí
      // Agrega un evento 'click' al botón
   const botonRegoistro=document.querySelector('#boton-registrarse')
@@ -92,7 +92,7 @@ $(document).ready(function() {
        }
         console.log('promesa')
         console.log(crear_usuario)
-        window.location.href = '/agenda-contactos/contactos/contactos.html';
+        window.location.href = '../contactos/contactos.html';
         
        
     }
@@ -154,6 +154,3 @@ $(document).ready(function() {
         });
     };
 
-
-});
-  

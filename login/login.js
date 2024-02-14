@@ -97,7 +97,7 @@ const sing_in=async (email,password)=> {
                     let name=data.data.name+' '+data.data.apellido
                     localStorage.setItem('token',data.token)
                     localStorage.setItem('name',name)
-                    window.location.href = '/agenda-contactos/contactos/contactos.html';
+                    window.location.href = '../contactos/contactos.html';
                 }
               
             })

@@ -66,7 +66,7 @@ var totalContactos=0
     deslogar.addEventListener('click',()=>{
         localStorage.removeItem('token')
         localStorage.removeItem('name')
-        window.location.href = '/agenda-contactos/login/login.html';
+        window.location.href = '../login/login.html';
         
     })
    
