@@ -1,8 +1,8 @@
-'use strict'
+
+
+const url='https://api-agenda-mgys.onrender.com'
 
 var totalContactos=0
-   
-document.addEventListener('DOMContentLoaded', async ()=> {
 
     const nameUserSpan=document.querySelector("#nameUser")
     const nameUser=localStorage.getItem('name')
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     })
     
     if(crearContactoLocalStorage==='true'){
-        console.log('localstorage: ',crearContactoLocalStorage)
+       
         divCrearContacto.style.display='block'
         contenedor_contactos.style.display='none'
     }
@@ -114,107 +114,6 @@ document.addEventListener('DOMContentLoaded', async ()=> {
        nameUserSpan.textContent=localStorage.getItem('name')
     }
 
-    const crearContscto=async ()=>{
-        let name=c_name.value
-        let apellido=c_apellido.value
-        let email=c_email.value
-        let telefono=c_telefono.value
-        let image='image.png'
-
-        const data={
-            name,apellido,email,telefono
-        }
-
-        if(name && apellido && email && telefono){
-         
-          const creandoContacto= await crearContactoHttp(name,apellido,email,telefono,image)
-           if(creandoContacto.code===201){
-            const divNotieneContacto=document.getElementById('noTieneContactos')
-            const divListContacto=document.getElementById('contenedor-2')
-            const contactoNoEncontrado=document.getElementById('contactoNoEncontrado')
-                localStorage.setItem('crear-contacto','false')
-                divCrearContacto.style.display='none'
-                contenedor_contactos.style.display='block'
-                c_name.value=''
-                c_apellido.value=''
-                c_email.value=''
-                c_telefono.value=''
-                c_image.value=''
-                agregarPagination(creandoContacto.data)
-                agregarMensajeAAlerta(creandoContacto.message)
-
-                divNotieneContacto.style.display='none'
-                divListContacto.style.display='block'
-                contactoNoEncontrado.display='mone'
-
-           }
-        }else{
-            if(!name){
-                c_name.classList.add('inputError')
-            }
-            if(!apellido){
-                c_apellido.classList.add('inputError')
-            }
-            if(!email){
-                c_email.classList.add('inputError')
-            }
-            if(!telefono){
-                c_telefono.classList.add('inputError')
-            }
-            console.log('error')
-        }
-
-       
-     
-    }
-
-    const crearContactoHttp=async (name,apellido,email,telefono,image)=> {
-        return new Promise((resolve, reject) => {
-            const data = { name,apellido,email,telefono,image };
-            const token=localStorage.getItem('token')
-            const limit=localStorage.getItem('limit') || 10
-            // URL de tu backend
-            const backendURL = `http://localhost:3001/test/create/${limit}`;
-            
-    
-                fetch(backendURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.code === 409) {
-                            // Puedes manejar el caso de código 409 de alguna manera
-                            // Por ejemplo, puedes rechazar la promesa con un mensaje de error
-                            resolve(data);
-                        }
-    
-                        if (data.code === 201) {
-                            const totalContactosSpam=document.querySelector('#totalContactos')
-   
-  
-                            // Puedes resolver la promesa con los datos que desees
-                            totalContactos=data.data.totalDocs
-                            totalContactosSpam.textContent=`(${totalContactos})`
-                            agregarContactosATabla(data.data.docs)
-                          //  agregarPagination(data.data)
-                            resolve(data);
-                        }
-
-                        console.log(data)
-                    })
-                    .catch(error => {
-                        // Puedes rechazar la promesa con un mensaje de error en caso de fallo
-                        reject(error);
-                    });
-            });
-    
-             
-    }
   
 
    
@@ -222,14 +121,110 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     
     // Función para editar un contacto (ejemplo)
 
-  const limirStorage=localStorage.getItem('limit') || 10
-    getAllContactoHttp(1,limirStorage).then((data)=>{
-        console.log(data)
-        contenedorContactos.style.display='block'
-        contenedorLoading.style.display='none'
-    })
+ 
 
-})
+const crearContscto=async ()=>{
+    let name=c_name.value
+    let apellido=c_apellido.value
+    let email=c_email.value
+    let telefono=c_telefono.value
+    let image='image.png'
+
+    const data={
+        name,apellido,email,telefono
+    }
+
+    if(name && apellido && email && telefono){
+     
+      const creandoContacto= await crearContactoHttp(name,apellido,email,telefono,image)
+       if(creandoContacto.code===201){
+        const divNotieneContacto=document.getElementById('noTieneContactos')
+        const divListContacto=document.getElementById('contenedor-2')
+        const contactoNoEncontrado=document.getElementById('contactoNoEncontrado')
+            localStorage.setItem('crear-contacto','false')
+            divCrearContacto.style.display='none'
+            contenedor_contactos.style.display='block'
+            c_name.value=''
+            c_apellido.value=''
+            c_email.value=''
+            c_telefono.value=''
+            c_image.value=''
+            agregarPagination(creandoContacto.data)
+            agregarMensajeAAlerta(creandoContacto.message)
+
+            divNotieneContacto.style.display='none'
+            divListContacto.style.display='block'
+            contactoNoEncontrado.display='mone'
+
+       }
+    }else{
+        if(!name){
+            c_name.classList.add('inputError')
+        }
+        if(!apellido){
+            c_apellido.classList.add('inputError')
+        }
+        if(!email){
+            c_email.classList.add('inputError')
+        }
+        if(!telefono){
+            c_telefono.classList.add('inputError')
+        }
+        console.log('error')
+    }
+
+   
+ 
+}
+
+const crearContactoHttp=async (name,apellido,email,telefono,image)=> {
+    return new Promise((resolve, reject) => {
+        const data = { name,apellido,email,telefono,image };
+        const token=localStorage.getItem('token')
+        const limit=localStorage.getItem('limit') || 10
+        // URL de tu backend
+        const backendURL = `${url}/test/create/${limit}`;
+        
+
+            fetch(backendURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 409) {
+                        // Puedes manejar el caso de código 409 de alguna manera
+                        // Por ejemplo, puedes rechazar la promesa con un mensaje de error
+                        resolve(data);
+                    }
+
+                    if (data.code === 201) {
+                        const totalContactosSpam=document.querySelector('#totalContactos')
+
+
+                        // Puedes resolver la promesa con los datos que desees
+                        totalContactos=data.data.totalDocs
+                        totalContactosSpam.textContent=`(${totalContactos})`
+                        agregarContactosATabla(data.data.docs)
+                      //  agregarPagination(data.data)
+                        resolve(data);
+                    }
+
+                    console.log(data)
+                })
+                .catch(error => {
+                    // Puedes rechazar la promesa con un mensaje de error en caso de fallo
+                    reject(error);
+                });
+        });
+
+         
+}
+
 
 const agregarPagination=(data)=>{
     const contenedorPagination=document.getElementById('contenedorPagination')
@@ -298,29 +293,7 @@ const nexPagination=(accion,page,totalPage)=>{
 
 }
 
-const eliminarContacto=async (id)=> {
-    // Lógica para editar el contacto con el email proporcionado
-    console.log(`eliminar id: ${id}`);
-    const eliminadoContacto=await deleteContactoHttp(id)
-    console.log(eliminadoContacto)
-    if(eliminadoContacto.code===200){
-        // Busca la fila por su ID
-     const filaEliminar = document.getElementById(id);
-     if(filaEliminar){
-        filaEliminar.remove()
-     }
 
-     const totalContactosSpam=document.querySelector('#totalContactos')
-   
-  
-     // Puedes resolver la promesa con los datos que desees
-     totalContactos=eliminadoContacto.data.totalDocs
-     totalContactosSpam.textContent=`(${totalContactos})`
-     agregarMensajeAAlerta(eliminadoContacto.message)
-   
-
-    }
-}
 
 const editarContacto=(name,apellido,email,telefono,image,id)=>{
     const contenedor_contactos=document.getElementById('contenedor')
@@ -375,7 +348,7 @@ const deleteContactoHttp=async (id)=> {
 
         const token=localStorage.getItem('token')
         // URL de tu backend
-        const backendURL = `http://localhost:3001/test/delete/${id}`;
+        const backendURL = `${url}/test/delete/${id}`;
         console.log('token: ',token)
 
             fetch(backendURL, {
@@ -434,7 +407,7 @@ const getAllContactoHttp=async (page,limit)=> {
      
         // URL de tu backend
         if(token){
-            const backendURL = `http://localhost:3001/test/get-all/${page}/${limit}`;
+            const backendURL = `${url}/test/get-all/${page}/${limit}`;
            
     
                 fetch(backendURL, {
@@ -559,7 +532,7 @@ const updateContactoHttp=(id)=>{
           
             const token=localStorage.getItem('token')
             // URL de tu backend
-            const backendURL = `http://localhost:3001/test/update`;
+            const backendURL = `${url}/test/update`;
     
                 fetch(backendURL, {
                     method: 'PUT',
@@ -616,7 +589,7 @@ const buscarContactoEspecifico=(name)=>{
             
             const token=localStorage.getItem('token')
             // URL de tu backend
-            const backendURL = `http://localhost:3001/test/busqueda/${name}`;
+            const backendURL = `${url}/test/busqueda/${name}`;
     
                 fetch(backendURL, {
                     method: 'GET',   
@@ -772,3 +745,36 @@ const cerrarAlerta=()=>{
         console.error('error al cerrar alerta: ',error)
     }
 }
+
+
+const limirStorage=localStorage.getItem('limit') || 10
+getAllContactoHttp(1,limirStorage).then((data)=>{
+    console.log(data)
+    contenedorContactos.style.display='block'
+    contenedorLoading.style.display='none'
+})
+
+ const eliminarContacto=async (id)=> {
+    // Lógica para editar el contacto con el email proporcionado
+    console.log(`eliminar id: ${id}`);
+    const eliminadoContacto=await deleteContactoHttp(id)
+    console.log(eliminadoContacto)
+    if(eliminadoContacto.code===200){
+        // Busca la fila por su ID
+     const filaEliminar = document.getElementById(id);
+     if(filaEliminar){
+        filaEliminar.remove()
+     }
+
+     const totalContactosSpam=document.querySelector('#totalContactos')
+   
+  
+     // Puedes resolver la promesa con los datos que desees
+     totalContactos=eliminadoContacto.data.totalDocs
+     totalContactosSpam.textContent=`(${totalContactos})`
+     agregarMensajeAAlerta(eliminadoContacto.message)
+   
+
+    }
+}
+   

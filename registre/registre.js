@@ -1,5 +1,6 @@
 
 'use strict'
+const url='https://api-agenda-mgys.onrender.com'
 // Verifica que el documento esté completamente cargado antes de ejecutar código jQuery
 $(document).ready(function() {
     // Tu código jQuery aquí
@@ -116,7 +117,7 @@ $(document).ready(function() {
   const crearUsuario = async (name, apellido, email, password) => {
     return new Promise((resolve, reject) => {
         // URL de tu backend
-        const backendURL = 'http://localhost:3001/test-user/create';
+        const backendURL = `${url}/test-user/create`;
 
             const data = {
                 email: email,

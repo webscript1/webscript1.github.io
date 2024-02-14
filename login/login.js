@@ -1,4 +1,5 @@
 // Verifica que el documento esté completamente cargado antes de ejecutar código jQuery
+const url='https://api-agenda-mgys.onrender.com'
 document.addEventListener('DOMContentLoaded', function() {
     // Tu código jQuery aquí
      // Agrega un evento 'click' al botón
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const emailImput=document.querySelector('#email')
   const passwordImput=document.querySelector('#password')
 
+ 
   botonLogin.addEventListener('click', async function(e) {
     e.preventDefault(); // Evitar la acción predeterminada (enviar formulario)
    await singIng()
@@ -71,7 +73,7 @@ const singIng=async ()=> {
 
 const sing_in=async (email,password)=> {
     // URL de tu backend
-    const backendURL = 'http://localhost:3001/test-user/sing-in';
+    const backendURL = `${url}/test-user/sing-in`;
 
    
     const data = { email: email, password: password };
