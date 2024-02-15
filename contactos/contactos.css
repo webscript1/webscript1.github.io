@@ -17,6 +17,14 @@ h2{
     height: inherit;
     height: 100px;
 }
+#update-contacto{
+
+ padding-top: 20px !important;
+}
+#update-contacto h3{
+  text-align: center;
+
+}
 a{
   text-decoration: none;
   color: white;
@@ -217,7 +225,7 @@ table {
   #botonCrearContacto, #botonUpdateContacto{
     width: 100%;
   }
-  #botonRegresar,#botonRegresarUpdateContacto{
+  #botonRegresar{
     position: absolute;
     margin-top: 40px;
   }

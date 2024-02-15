@@ -323,30 +323,30 @@ const editarContacto=(name,apellido,email,telefono,image,id)=>{
                 <div>
                 <label for="name">nombre</label>
                 <input value="${name}" id="u-name" name="name" type="text">
-                <span id="updateNombreErrorSpam"></span>
+                <span id="updateNombreErrorSpam" class="messageError"></span>
                 </div>
                 <div>
                 <label  for="apellido">apellido</label>
                 <input value="${apellido}" id="u-apellido" name="apellido" type="text">
-                <span id="updateApellidoErrorSpam"></span>
+                <span id="updateApellidoErrorSpam" class="messageError"></span>
                 </div>
                 <div>
                 <label for="email">email</label>
                 <input value="${email}" id="u-email" name="email" type="text">
-                <span id="updateEmailErrorSpam"></span>
+                <span id="updateEmailErrorSpam" class="messageError"></span>
                 </div>
                 <div>
                 <label for="telefono">telefono</label>
                 <input value="${telefono}" id="u-telefono" name="telefono" type="text">
-                <span id="updateTelefonoErrorSpam"></span>
+                <span id="updateTelefonoErrorSpam" class="messageError"></span>
                 </div>
                 <div>
                     <label for="image">image</label>
                     <input type="file" name="image" id="c-image">
-                    <span id="updateImageErrorSpam"></span>
+                    <span id="updateImageErrorSpam" class="messageError"></span>
                 </div>
                    <div id="contenedorButonUpdateContacto">
-                    <button onclick="updateContactoHttp('${id}')" id="botonUpdateContacto" class="mi-boton boton-success">actualizar</button>
+                    <button onclick="updateContacto('${id}')" id="botonUpdateContacto" class="mi-boton boton-success">actualizar</button>
                     <span id="loadingUpdateContacto">por favor espere...</span>
                     </div>
    `
@@ -521,6 +521,44 @@ const saveLimitStorage=(limit)=>{
     localStorage.setItem('limit',limit)
 }
 
+const updateContacto=async (id)=>{
+    const name=document.getElementById('u-name')
+    const apellido=document.getElementById('u-apellido')
+    const email=document.getElementById('u-email')
+    const telefono=document.getElementById('u-telefono')
+    try {
+       
+        if(name.value && apellido.value && email.value && telefono.value){
+            await updateContactoHttp(id)
+         }
+
+        if(!name.value){  
+          const spanErrorName= document.getElementById('updateNombreErrorSpam')
+            spanErrorName.textContent='nombre requerido'
+            name.classList.add('inputError')     
+     }
+        if(!apellido.value){  
+            const spanErrorApellido= document.getElementById('updateApellidoErrorSpam')
+            spanErrorApellido.textContent='apellido requerido'
+            apellido.classList.add('inputError')     
+    }
+        if(!email.value){
+            const spanErrorEmail= document.getElementById('updateEmailErrorSpam')
+            spanErrorEmail.textContent='email requerido'
+            email.classList.add('inputError')     
+        }
+        if(!telefono.value){
+            const spanErrorTelefono= document.getElementById('updateTelefonoErrorSpam')
+            spanErrorTelefono.textContent='telefono requerido'
+            email.classList.add('inputError')     
+        }
+
+
+        
+    } catch (error) {
+        console.error('error alactualizar contacto: ',error)
+    }
+}
 const updateContactoHttp=(id)=>{
     try {
         const name=document.getElementById('u-name')
