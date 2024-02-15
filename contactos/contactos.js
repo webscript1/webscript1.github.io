@@ -40,7 +40,8 @@ var totalContactos=0
     const contenedorContactos=document.getElementById('contenedorContatos')
     const contenedorLoading=document.getElementById('loading')
     const loadingCrearContacto=document.getElementById('loadingCrearContacto')
-
+    const contenedorBuscarUser=document.getElementById('contenedor-buscar-user')
+    const loadingBuscandoContacto=document.getElementById('loadingBuscandoContacto')
  
 
     formularioUpdateContacto.addEventListener('submit',(e)=>{
@@ -53,9 +54,14 @@ var totalContactos=0
         contenedor_contactos.style.display='none'
     }
 
-    botonBuscarContacto.addEventListener('click', ()=>{
+    botonBuscarContacto.addEventListener('click', async ()=>{
         const name=inputBuscarContacto.value
-        buscarContactoEspecifico(name)
+        contenedorBuscarUser.style.display='none'
+        loadingBuscandoContacto.style.display='flex'
+
+        await  buscarContactoEspecifico(name)
+        contenedorBuscarUser.style.display='flex'
+        loadingBuscandoContacto.style.display='none'
     })
 
     ir_agenta.addEventListener('click',()=>{
@@ -272,8 +278,7 @@ const agregarPagination=(data)=>{
 }
 
 const nexPagination=(accion,page,totalPage)=>{
-    console.log('next')
-    console.log(accion)
+   
     if('siguiente'===accion){
         
           const pages=Number(page)+1
@@ -355,8 +360,7 @@ const deleteContactoHttp=async (id)=> {
         const token=localStorage.getItem('token')
         // URL de tu backend
         const backendURL = `${url}/test/delete/${id}`;
-        console.log('token: ',token)
-
+      
             fetch(backendURL, {
                 method: 'DELETE',
                 headers: {
@@ -378,7 +382,6 @@ const deleteContactoHttp=async (id)=> {
                       
                     }
 
-                    console.log(data)
                 })
                 .catch(error => {
                     // Puedes rechazar la promesa con un mensaje de error en caso de fallo
@@ -771,7 +774,7 @@ getAllContactoHttp(1,limirStorage).then((data)=>{
 
  const eliminarContacto=async (id)=> {
     // Lógica para editar el contacto con el email proporcionado
-    console.log(`eliminar id: ${id}`);
+    
     const eliminadoContacto=await deleteContactoHttp(id)
     console.log(eliminadoContacto)
     if(eliminadoContacto.code===200){
