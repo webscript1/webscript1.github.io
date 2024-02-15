@@ -33,3 +33,13 @@ input{
     text-align: center;
     text-decoration: none;
 }
+
+#contenedorBotonRegistrarse{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+#loading{
+    display: none;
+}

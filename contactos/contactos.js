@@ -39,6 +39,7 @@ var totalContactos=0
     const pagination=document.getElementById('pagination')
     const contenedorContactos=document.getElementById('contenedorContatos')
     const contenedorLoading=document.getElementById('loading')
+    const loadingCrearContacto=document.getElementById('loadingCrearContacto')
 
  
 
@@ -66,7 +67,7 @@ var totalContactos=0
     deslogar.addEventListener('click',()=>{
         localStorage.removeItem('token')
         localStorage.removeItem('name')
-        window.location.href = '../login/login.html';
+        window.location.href = '../index.html';
         
     })
    
@@ -135,7 +136,9 @@ const crearContscto=async ()=>{
     }
 
     if(name && apellido && email && telefono){
-     
+
+      boton_crear_contacto.style.display='none'
+      loadingCrearContacto.style.display='block'
       const creandoContacto= await crearContactoHttp(name,apellido,email,telefono,image)
        if(creandoContacto.code===201){
         const divNotieneContacto=document.getElementById('noTieneContactos')
@@ -157,6 +160,8 @@ const crearContscto=async ()=>{
             contactoNoEncontrado.display='mone'
 
        }
+       boton_crear_contacto.style.display='block'
+       loadingCrearContacto.style.display='none'
     }else{
         if(!name){
             c_name.classList.add('inputError')
@@ -335,9 +340,10 @@ const editarContacto=(name,apellido,email,telefono,image,id)=>{
                     <input type="file" name="image" id="c-image">
                     <span id="updateImageErrorSpam"></span>
                 </div>
-                <div>
+                   <div id="contenedorButonUpdateContacto">
                     <button onclick="updateContactoHttp('${id}')" id="botonUpdateContacto" class="mi-boton boton-success">actualizar</button>
-                </div>
+                    <span id="loadingUpdateContacto">por favor espere...</span>
+                    </div>
    `
    formularioUupdateContacto.innerHTML=plantillas
    
@@ -519,6 +525,11 @@ const updateContactoHttp=(id)=>{
         const email=document.getElementById('u-email')
         const telefono=document.getElementById('u-telefono')
         const image=document.getElementById('u-image')
+        const loadingUpdate=document.getElementById('loadingUpdateContacto')
+        const botonUpdateContacto=document.getElementById('botonUpdateContacto')
+        botonUpdateContacto.style.display='none'
+        loadingUpdate.style.display='block'
+        
 
         return new Promise((resolve, reject) => {
           
@@ -544,6 +555,8 @@ const updateContactoHttp=(id)=>{
                 })
                     .then(response => response.json())
                     .then(data => {
+                        botonUpdateContacto.style.display='block'
+                        loadingUpdate.style.display='none'
                         if (data.code === 409) {
                             // Puedes manejar el caso de código 409 de alguna manera
                             // Por ejemplo, puedes rechazar la promesa con un mensaje de error
@@ -572,6 +585,8 @@ const updateContactoHttp=(id)=>{
                         console.log(data)
                     })
                     .catch(error => {
+                        botonUpdateContacto.style.display='block'
+                        loadingUpdate.style.display='none'
                         // Puedes rechazar la promesa con un mensaje de error en caso de fallo
                         reject(error);
                     });

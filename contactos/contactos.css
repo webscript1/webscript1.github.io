@@ -189,7 +189,21 @@ table {
    width: 400px;
    margin: 0px auto;
   }
- 
+ #contenedorBotoncrearContacto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+ }
+ #contenedorButonUpdateContacto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+ }
+ #loadingUpdateContacto{
+  display: none;
+ }
   #crear-contacto  div form{
     margin: 0px auto;
   }
@@ -200,6 +214,9 @@ table {
   #botonRegresar,#botonRegresarUpdateContacto{
     position: absolute;
     margin-top: 40px;
+  }
+  #loadingCrearContacto{
+    display: none;
   }
 
   
@@ -245,4 +262,23 @@ table {
 #botonCerrarAlerta:hover{
   cursor: pointer;
   opacity: 0.8;
+}
+#botonBurcarContacto{
+ 
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 5px;
+  overflow: visible;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  outline: none;
+}
+#botonBurcarContacto:hover{
+  cursor: pointer;
+  opacity: 0.8;
+ 
 }

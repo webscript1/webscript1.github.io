@@ -3,11 +3,14 @@ const url='https://api-agenda-mgys.onrender.com'
 document.addEventListener('DOMContentLoaded', function() {
     // Tu código jQuery aquí
      // Agrega un evento 'click' al botón
-  const botonLogin=document.querySelector('#botonLogin')
+  const botonLogin=document.getElementById('botonLogin')
   const emailSpan=document.querySelector('#emailSpan') 
   const passwordSpan=document.querySelector('#passwordSpan')
   const emailImput=document.querySelector('#email')
   const passwordImput=document.querySelector('#password')
+  const loading=document.getElementById("loading")
+  
+  const encaleRegistrarse=document.getElementById('#')
 
  
   botonLogin.addEventListener('click', async function(e) {
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Función para agregar un contacto
 const singIng=async ()=> {
+    
     const email= emailImput.value
     const password= passwordImput.value
     emailSpan.textContent=''
@@ -37,7 +41,7 @@ const singIng=async ()=> {
       //  window.location.href = '/agenda-contactos/contactos/contactos.html';
 
         console.log('email: ',email+' password: ',password)
-      await  sing_in(email,password)
+      await  sing_inHttp(email,password)
 
      
 
@@ -71,8 +75,12 @@ const singIng=async ()=> {
     
 }
 
-const sing_in=async (email,password)=> {
+const sing_inHttp=async (email,password)=> {
     // URL de tu backend
+   
+    botonLogin.style.display='none'
+    loading.style.display='block'
+console.log('loading: ',loading)
     const backendURL = `${url}/test-user/sing-in`;
 
    
@@ -87,6 +95,8 @@ const sing_in=async (email,password)=> {
             })
             .then(response => response.json())
             .then(data => {
+                botonLogin.style.display='block'
+                loading.style.display='none'
                 if(data.code===404){
                     emailSpan.textContent=data.message
                 }
@@ -97,7 +107,7 @@ const sing_in=async (email,password)=> {
                     let name=data.data.name+' '+data.data.apellido
                     localStorage.setItem('token',data.token)
                     localStorage.setItem('name',name)
-                    window.location.href = '../contactos/contactos.html';
+                    window.location.href = './contactos/contactos.html';
                 }
               
             })

@@ -5,7 +5,7 @@ const url='https://api-agenda-mgys.onrender.com'
 
     // Tu código jQuery aquí
      // Agrega un evento 'click' al botón
-  const botonRegoistro=document.querySelector('#boton-registrarse')
+  const botonRegoistro=document.getElementById('boton-registrarse')
   const inputName=document.querySelector('#name')
   const inputApellido=document.querySelector('#apellido')
   const inputEmail=document.querySelector('#email')
@@ -14,6 +14,7 @@ const url='https://api-agenda-mgys.onrender.com'
   const emailSpan=document.querySelector('#emailSpan')
   const passwordSpan=document.querySelector('#passwordSpan')
   const repetirPasswordSpan=document.querySelector('#repetirPasswordSpan')
+  const loading=document.getElementById('loading')
 
   botonRegoistro.addEventListener('click',function(e) {
     e.preventDefault()
@@ -78,7 +79,7 @@ const url='https://api-agenda-mgys.onrender.com'
         console.log('usuario registrado')
         console.log(data)
        
-       const crear_usuario=await crearUsuario(name,apellido,email,password)
+       const crear_usuario=await crearUsuarioHttp(name,apellido,email,password)
 
        if(crear_usuario.code===409){
         emailSpan.textContent=crear_usuario.message
@@ -114,7 +115,9 @@ const url='https://api-agenda-mgys.onrender.com'
     
   }
 
-  const crearUsuario = async (name, apellido, email, password) => {
+  const crearUsuarioHttp = async (name, apellido, email, password) => {
+    botonRegoistro.style.display='none'
+    loading.style.display='block'
     return new Promise((resolve, reject) => {
         // URL de tu backend
         const backendURL = `${url}/test-user/create`;
@@ -135,6 +138,8 @@ const url='https://api-agenda-mgys.onrender.com'
             })
                 .then(response => response.json())
                 .then(data => {
+                    botonRegoistro.style.display='block'
+                    loading.style.display='none'
                     if (data.code === 409) {
                         // Puedes manejar el caso de código 409 de alguna manera
                         // Por ejemplo, puedes rechazar la promesa con un mensaje de error
